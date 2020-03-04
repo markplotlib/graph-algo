@@ -1,1 +1,8 @@
 a.out
+h.out
+hash_map.cpp
+heap.py
+CC.*
+test/
+oop-copy/
+*workspace*
