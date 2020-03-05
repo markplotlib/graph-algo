@@ -27,6 +27,15 @@ int main() {
     wgtMap1.insert( std::pair<Heap::Key, Heap::Weight>(key1, wgt1) );
     wgtMap1.insert( std::pair<Heap::Key, Heap::Weight>(key2, wgt1) );
 
+    // initialize Heap object
+	// ctor 1: no-args
+    Heap heap1 = Heap();
+
+    // ctor 2: build from WeightMap
+    Heap heap2 = Heap(wgtMap1);
+
+    // empty()
+    cout << boolalpha << heap1.empty() << endl;
 
     return 0;
 }

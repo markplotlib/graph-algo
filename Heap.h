@@ -42,6 +42,18 @@ public:
     Heap() {}
     ~Heap() {}
 
+    /**
+     * Construct a heap from the given initial list, Θ(n) time.
+     * @param initial start with these keys and their weights
+     */
+    Heap(const WeightMap& initial);
+
+    /**
+     * Check if there are more key:weight pairs in the heap.
+     * @return True if no more items in the heap.
+     */
+    bool empty() const;
+
 
 private:
     typedef std::map<Key, int> PlaceMap;
