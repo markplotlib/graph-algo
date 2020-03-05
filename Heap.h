@@ -15,7 +15,9 @@
  * @see CPSC5031, Winter 2018, HW #8
  */
 
-// #pragma once    // preprocessor directive to include the current source file only once in a single compilation
+#ifndef Heap_H
+#define Heap_H
+
 #include <string>
 #include <vector>
 #include <map>
@@ -49,3 +51,5 @@ private:
     PlaceMap place;
 
 };
+
+#endif
