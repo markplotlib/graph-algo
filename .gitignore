@@ -1,5 +1,5 @@
-a.out
-h.out
+*.out
+*.h.gch
 hash_map.cpp
 heap.py
 CC.*

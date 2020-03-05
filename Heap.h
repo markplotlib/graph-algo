@@ -15,7 +15,7 @@
  * @see CPSC5031, Winter 2018, HW #8
  */
 
-#pragma once
+// #pragma once    // preprocessor directive to include the current source file only once in a single compilation
 #include <string>
 #include <vector>
 #include <map>
@@ -40,37 +40,6 @@ public:
     Heap() {}
     ~Heap() {}
 
-    /**
-     * Construct a heap from the given initial list, Θ(n) time.
-     * @param initial start with these keys and their weights
-     */
-    Heap(const WeightMap& initial);
-
-    /**
-     * Check if there are more key:weight pairs in the heap.
-     * @return True if no more items in the heap.
-     */
-    bool empty() const;
-
-    /**
-     * Put key into heap with given weight. If key is already present, this will change the weight and repair
-     * the heap as necessary.
-     * @param key    key which is to be added or modified
-     * @param weight desired weight for given key
-     */
-    void enqueue(Key key, int weight);
-
-    /**
-     * Remove minimum element and return its key and weight.
-     * @return the key:weight of the minimum weight in the heap.
-     */
-    KeyWeight dequeue();
-
-    /**
-     * Get a list of all the key:weight pairs currently in the heap.
-     * @return list of key:weight pairs (arbitrary order)
-     */
-    const WeightMap& weightMap() const;
 
 private:
     typedef std::map<Key, int> PlaceMap;
@@ -79,12 +48,4 @@ private:
     WeightMap weights;
     PlaceMap place;
 
-    int last() const;
-    int parent(int i) const;
-    int leftChild(int p) const;
-    int rightChild(int p) const;
-    Weight weight(int i) const;
-    void swapUp(int i);
-    void swapDown(int p);
-    void heapConstruct();
 };
