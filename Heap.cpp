@@ -6,18 +6,18 @@
 #include <map>
 using namespace std;
 
-// Constructor 1: no-args
-// Heap::Heap() {
-//     Heap::Key keyA = "keyA";
-//     heap.push_back(keyA);
-// }
-
 /**
  * Construct a heap from the given initial list, Θ(n) time.
  * @param initial start with these keys and their weights
  */
 Heap::Heap(const WeightMap& initial) {
-    weights = initial;
+    map<Key, Weight>::const_iterator itr;
+    for (auto itr = initial.begin(); itr != initial.end(); itr++) {
+        // weights.insert(pair<Key, Weight>(itr->first, itr->second));
+        Key key = itr->first;
+        Weight weight = itr->second;
+        weights.insert(pair<Key, Weight>(key, weight));
+    }
 }
 
 /**
@@ -27,6 +27,7 @@ Heap::Heap(const WeightMap& initial) {
 bool Heap::empty() const {
     return heap.size() == 0;
 }
+
 
 int main() {
     Heap::Key key1 = "k1";
@@ -46,7 +47,6 @@ int main() {
     heapArr1.push_back(key1);
     Heap::Key key2 = "k2";
     heapArr1.push_back(key2);
-    // Heap::Key key3 = heapArr1.pop_back();
 
     // initialize WeightMap object
     Heap::WeightMap wgtMap1;
@@ -60,8 +60,9 @@ int main() {
     // ctor 2: build from WeightMap
     Heap heap2 = Heap(wgtMap1);
 
-    // empty()
+    // test empty()
     cout << boolalpha << heap1.empty() << endl;
+    cout << boolalpha << heap2.empty() << endl;
 
     return 0;
 }

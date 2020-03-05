@@ -54,6 +54,14 @@ public:
      */
     bool empty() const;
 
+    /**
+     * Put key into heap with given weight. If key is already present, this will change the weight and repair
+     * the heap as necessary.
+     * @param key    key which is to be added or modified
+     * @param weight desired weight for given key
+     */
+    void enqueue(Key key, int weight);
+
 
 private:
     typedef std::map<Key, int> PlaceMap;
