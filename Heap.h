@@ -15,8 +15,7 @@
  * @see CPSC5031, Winter 2018, HW #8
  */
 
-#ifndef Heap_H
-#define Heap_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -71,5 +70,3 @@ private:
     PlaceMap place;
 
 };
-
-#endif

@@ -11,12 +11,17 @@ using namespace std;
  * @param initial start with these keys and their weights
  */
 Heap::Heap(const WeightMap& initial) {
-    map<Key, Weight>::const_iterator itr;
-    for (auto itr = initial.begin(); itr != initial.end(); itr++) {
-        // weights.insert(pair<Key, Weight>(itr->first, itr->second));
-        Key key = itr->first;
-        Weight weight = itr->second;
-        weights.insert(pair<Key, Weight>(key, weight));
+    if (initial.size() == 0) {
+        Heap();
+    } else {   
+        map<Key, Weight>::const_iterator itr;
+        for (auto itr : initial) {
+            Key key = itr.first;
+            Weight weight = itr.second;
+            weights.insert(pair<Key, Weight>(key, weight));
+
+            enqueue(key, weight);
+        }
     }
 }
 
@@ -28,41 +33,23 @@ bool Heap::empty() const {
     return heap.size() == 0;
 }
 
+/**
+ * Put key into heap with given weight. If key is already present, this will change the weight and repair
+ * the heap as necessary.
+ * @param key    key which is to be added or modified
+ * @param weight desired weight for given key
+ */
+void Heap::enqueue(Key key, int weight) {
 
-int main() {
-    Heap::Key key1 = "k1";
-    Heap::Weight wgt1 = 1;
+    // int old_weight;
 
-    // initialize struct KeyWeight
-    // ctor 1: no-args
-    Heap::KeyWeight kw1;
-    kw1 = Heap::KeyWeight();
-    // ctor 2: key, weight args
-    Heap::KeyWeight kw2 = Heap::KeyWeight(key1, wgt1);
-    cout << "key: " << kw2.key << endl;
-    cout << "wgt: " << kw2.weight << endl;
+    if (weights.find(key) == weights.end()) {
+        // key not found in weights -- insert new key
+        weights.insert(pair<Key, Weight>(key, weight));
+    } else {
+        // found it
+        // old_weight = weights.at(key);
+    }
 
-    // initialize HeapArray object
-    Heap::HeapArray heapArr1;
-    heapArr1.push_back(key1);
-    Heap::Key key2 = "k2";
-    heapArr1.push_back(key2);
-
-    // initialize WeightMap object
-    Heap::WeightMap wgtMap1;
-    wgtMap1.insert( std::pair<Heap::Key, Heap::Weight>(key1, wgt1) );
-    wgtMap1.insert( std::pair<Heap::Key, Heap::Weight>(key2, wgt1) );
-
-    // initialize Heap object
-	// ctor 1: no-args
-    Heap heap1 = Heap();
-
-    // ctor 2: build from WeightMap
-    Heap heap2 = Heap(wgtMap1);
-
-    // test empty()
-    cout << boolalpha << heap1.empty() << endl;
-    cout << boolalpha << heap2.empty() << endl;
-
-    return 0;
+    // heap.insert(pair<Key, Weight>(key, weight));
 }
