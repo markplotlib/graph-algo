@@ -16,7 +16,6 @@
  */
 
 #pragma once
-
 #include <string>
 #include <vector>
 #include <map>
@@ -61,6 +60,17 @@ public:
      */
     void enqueue(Key key, int weight);
 
+    /**
+     * Remove minimum element and return its key and weight.
+     * @return the key:weight of the minimum weight in the heap.
+     */
+    KeyWeight dequeue();
+
+    /**
+     * Get a list of all the key:weight pairs currently in the heap.
+     * @return list of key:weight pairs (arbitrary order)
+     */
+// const WeightMap& weightMap() const;
 
 private:
     typedef std::map<Key, int> PlaceMap;
@@ -69,4 +79,12 @@ private:
     WeightMap weights;
     PlaceMap place;
 
+    int last() const;
+    int parent(int i) const;
+    int leftChild(int p) const;
+    int rightChild(int p) const;
+    Weight weight(int i) const;
+    void swapUp(int i);
+    void swapDown(int p);
+    void heapConstruct();
 };
