@@ -125,8 +125,11 @@ void Heap::swapUp(int i) {
             Key tmp = heap.at(i);
             heap.at(i) = heap.at(p);        // Python: self.heap[i] = self.heap[p]
             heap.at(p) = tmp;               // Python: self.heap[p] = self.heap[i]
+            place.find(heap.at(i))->second = i;
+            place.find(heap.at(p))->second = p;            
             i = p;
-        }
+        } else
+            i = -1;  // exit while-loop
     }
 }
 

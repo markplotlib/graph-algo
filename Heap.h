@@ -7,7 +7,7 @@
  *
  * Min heap. Elements are key:weight pairs. Operations are:
     1. construct from set of key:weight pairs, Θ(n)
-    2. enqueue a new or existing key with its current weight, Θ(log n)
+    2. enqueue a new or existing key with its current weight, Θ(log n) worst case
     3. dequeue the key with the minimum weight, Θ(log n)
     4. empty tells if the heap is empty, Θ(1)
  *
