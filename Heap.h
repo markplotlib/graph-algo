@@ -70,7 +70,7 @@ public:
      * Get a list of all the key:weight pairs currently in the heap.
      * @return list of key:weight pairs (arbitrary order)
      */
-// const WeightMap& weightMap() const;
+    const WeightMap& weightMap() const;
 
 private:
     typedef std::map<Key, int> PlaceMap;

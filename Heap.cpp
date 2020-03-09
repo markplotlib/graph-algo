@@ -91,9 +91,11 @@ Heap::KeyWeight Heap::dequeue() {
  * Get a list of all the key:weight pairs currently in the heap.
  * @return list of key:weight pairs (arbitrary order)
  */
-// const WeightMap& weightMap() const {
-//     return weights;
-// }
+const Heap::WeightMap& Heap::weightMap() const {
+    // vector<KeyWeight> listKeyWgts;
+    const WeightMap wgtMap = weights;
+    return wgtMap;
+}
 
 int Heap::last() const {
     return heap.size() - 1;
