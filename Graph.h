@@ -11,10 +11,11 @@
 #pragma once
 #include <string>
 #include <vector>
+using namespace std;
 
 class Graph {
 public:
-	typedef std::vector<std::string> Vertices;
+	typedef vector<string> Vertices;
 
     Graph() {}
     ~Graph() {}
@@ -22,6 +23,8 @@ public:
 	Graph(const Vertices& initial);
 
 	int size();
+
+	void addEdge(string vertexFrom, string vertexTo, int weight=1);
 	
 private:
 	Vertices v;
