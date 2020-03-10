@@ -11,21 +11,25 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <map>
 using namespace std;
 
 class Graph {
 public:
 	typedef vector<string> Vertices;
+	typedef map<string, int> Dest;
+	// typedef map<string, Dest> Edge;
 
     Graph() {}
     ~Graph() {}
-
 	Graph(const Vertices& initial);
 
 	int size();
-
 	vector<string> vertices() const;
+	void addEdge(string vertexFrom, string vertexTo, int weight=1);
+	// int weightFromA(string dest);
 
 private:
 	Vertices v;
+	Dest d;
 };

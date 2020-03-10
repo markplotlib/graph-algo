@@ -19,3 +19,8 @@ int Graph::size() {
 vector<string> Graph::vertices() const {
 	return v;
 }
+
+void Graph::addEdge(string vertexFrom, string vertexTo, int weight) {
+	v.push_back(vertexFrom);
+	v.push_back(vertexTo);
+}
