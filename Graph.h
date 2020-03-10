@@ -11,18 +11,21 @@
 #pragma once
 #include <string>
 #include <vector>
+using namespace std;
 
 class Graph {
 public:
-	typedef std::vector<std::string> Vertices;
+	typedef vector<string> Vertices;
 
     Graph() {}
     ~Graph() {}
-	
+
 	Graph(const Vertices& initial);
 
 	int size();
-	
+
+	vector<string> vertices() const;
+
 private:
 	Vertices v;
 };

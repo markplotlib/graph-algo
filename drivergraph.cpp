@@ -13,6 +13,18 @@ int main() {
 	// graph of single-point only
     Graph g1 = Graph(v1);
 	cout << "graph size: " << g1.size() << endl;
+
+	// vector<vector<int>> adjacencyList;
+	// g1.addEdge("a", "b");
+	// should be (a)-->(b)
+	// [0 1]
+	// [0 0]
+
+    vector<string> vertVector = g1.vertices();
+    vector<string>::iterator itr;
+    for (auto itr : vertVector)
+        cout << itr << " ";
+    cout << endl;
 	
     return 0;
 }

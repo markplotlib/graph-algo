@@ -6,7 +6,7 @@
 using namespace std;
 
 Graph::Graph(const Vertices& initial) {
-	vector<std::string>::const_iterator itr;
+	vector<string>::const_iterator itr;
 	for (auto itr : initial) {
 		v.push_back(itr);
 	}
@@ -14,4 +14,8 @@ Graph::Graph(const Vertices& initial) {
 
 int Graph::size() {
 	return v.size();
+}
+
+vector<string> Graph::vertices() const {
+	return v;
 }
