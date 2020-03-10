@@ -10,17 +10,20 @@
 
 #pragma once
 #include <string>
+#include <vector>
 
 class Graph {
 public:
+	typedef std::string Name;
+	typedef std::vector<Name> Vertices;
+
     Graph() {}
     ~Graph() {}
-	std::string getName();
-	int getNum();
-	void setNum(int n);
-	void setName(std::string n);
+	
+	Graph(const Vertices& initial);
+
+	int size();
 	
 private:
-	std::string name;
-	int num;
+	Vertices v;
 };

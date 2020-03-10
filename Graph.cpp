@@ -5,18 +5,13 @@
 #include <string>
 using namespace std;
 
-string Graph::getName() {
-	return name;
+Graph::Graph(const Vertices& initial) {
+	vector<Name>::const_iterator itr;
+	for (auto itr : initial) {
+		v.push_back(itr);
+	}
 }
 
-int Graph::getNum() {
-	return num;
-}
-
-void Graph::setNum(int n) {
-	num = n;
-}
-
-void Graph::setName(string n) {
-	name = n;
+int Graph::size() {
+	return v.size();
 }

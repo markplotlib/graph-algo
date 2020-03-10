@@ -1,16 +1,19 @@
 #include "Graph.h"
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main() {    
     cout << "Graph object." << endl;
     
-    Graph g1 = Graph();
+	Graph::Name name1 = "a";
+	vector<Graph::Name> v1;	
+	v1.push_back(name1);
+	
+	// graph of a only
+    Graph g1 = Graph(v1);
 
-    g1.setName("bob");
-	g1.setNum(143);
-
-	cout << g1.getName() << ": " << g1.getNum() << endl;
-
+	cout << "graph size: " << g1.size() << endl;
+	
     return 0;
 }
