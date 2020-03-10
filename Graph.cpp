@@ -6,7 +6,7 @@
 using namespace std;
 
 Graph::Graph(const Vertices& initial) {
-	vector<Name>::const_iterator itr;
+	vector<std::string>::const_iterator itr;
 	for (auto itr : initial) {
 		v.push_back(itr);
 	}

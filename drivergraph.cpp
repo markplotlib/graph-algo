@@ -6,13 +6,12 @@ using namespace std;
 int main() {    
     cout << "Graph object." << endl;
     
-	Graph::Name name1 = "a";
-	vector<Graph::Name> v1;	
-	v1.push_back(name1);
+	vector<string> v1;
+	v1.push_back("a");
+	v1.push_back("b");
 	
-	// graph of a only
+	// graph of single-point only
     Graph g1 = Graph(v1);
-
 	cout << "graph size: " << g1.size() << endl;
 	
     return 0;

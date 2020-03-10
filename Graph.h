@@ -14,8 +14,7 @@
 
 class Graph {
 public:
-	typedef std::string Name;
-	typedef std::vector<Name> Vertices;
+	typedef std::vector<std::string> Vertices;
 
     Graph() {}
     ~Graph() {}
