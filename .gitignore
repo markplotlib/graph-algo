@@ -1,9 +1,8 @@
 *.out
+*.o
 *.h.gch
 hash_map.cpp
 vec_tor.cpp
 heap.py
-CC.*
-test/
-oop-copy/
 *workspace*
+*Makefile*

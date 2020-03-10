@@ -18,7 +18,9 @@ Heap::Heap(const WeightMap& initial) {
         for (auto itr : initial) {
             Key key = itr.first;
             Weight weight = itr.second;
+            heap.push_back(key);
             weights.insert(pair<Key, Weight>(key, weight));
+            place.insert(pair<Key, int>(key, last()));
         }
         heapConstruct();
     }
@@ -92,9 +94,9 @@ Heap::KeyWeight Heap::dequeue() {
  * @return list of key:weight pairs (arbitrary order)
  */
 const Heap::WeightMap& Heap::weightMap() const {
-    // vector<KeyWeight> listKeyWgts;
-    const WeightMap wgtMap = weights;
-    return wgtMap;
+                                        // this const doesn't change the heap object
+// this const returns a constant weightmap
+    return weights;
 }
 
 int Heap::last() const {
@@ -158,6 +160,7 @@ void Heap::swapDown(int p) {
 
 void Heap::heapConstruct() {
     int lastParent = parent(last());
-    for (int i = lastParent; i >= 0; i--)
+    for (int i = lastParent; i >= 0; i--) {
         swapDown(i);
+    }
 }
