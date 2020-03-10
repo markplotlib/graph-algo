@@ -1,6 +1,7 @@
 *.out
 *.o
 *.h.gch
+hw8.cpp
 hash_map.cpp
 vec_tor.cpp
 heap.py
