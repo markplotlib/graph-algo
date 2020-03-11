@@ -19,18 +19,15 @@ public:
 	typedef vector<string> Vertices;
 	typedef map<string, int> AdjList;
 
-    Graph() {}
-    ~Graph() {}
 	Graph(const Vertices& initial);
 
 	vector<string> vertices() const;
-	void addVertex(string);
 	int getEdge(string, string);
 	void addEdge(string vertexFrom, string vertexTo, int weight=1);
 
 private:
 	Vertices v;
-	map<string, AdjList> adjMatrix;
+	vector<AdjList> edges;
 	bool hasVertex(string);
 
 };

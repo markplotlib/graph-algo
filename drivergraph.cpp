@@ -3,36 +3,31 @@
 #include <vector>
 using namespace std;
 
-int main() {    
+int main() {
     cout << "Graph object." << endl;
-    
-	// graph of 1-arg ctor
-	// vector<string> v1; v1.push_back("ijk"); Graph g0 = Graph(v1);
 
-	Graph g1 = Graph();
-	g1.addVertex("a");
-	string x = "a", y = "a";
-	cout << "Wgt btwn " << x << " and " << y << " is: " 
+	vector<string> verts;
+    string x = "a", y = "b", z = "c";
+	verts.push_back(x);
+	verts.push_back(y);
+	verts.push_back(z);
+	Graph g1 = Graph(verts);
+
+	cout << "Wgt btwn " << x << " and " << y << " is: "
 		 << g1.getEdge(x, y) << endl;
 
-	// y = "z";
-	// cout << "Wgt btwn " << x << " and " << y << " is: " 
-		 // << g1.getEdge(x, y) << endl;
-
 	y = "b";
-	g1.addVertex(y);
 	g1.addEdge(x, y, 123);
-	cout << "Wgt btwn " << x << " and " << y << " is: " 
+	cout << "Wgt btwn " << x << " and " << y << " is: "
 		 << g1.getEdge(x, y) << endl;
 
 	// b does not lead to a
 	// string tmp;
 	// tmp = x; x = y; y = tmp;
-	// cout << "Wgt btwn " << x << " and " << y << " is: " 
+	// cout << "Wgt btwn " << x << " and " << y << " is: "
 		 // << g1.getEdge(x, y) << endl;
 
 	// g1.addEdge("a", "c");
-	// g1.addVertex("c");
 	// g1.addEdge("a", "c");
 
 	cout << "Vertices: ";
@@ -41,6 +36,6 @@ int main() {
     for (auto itr : vertVector)
         cout << itr << " ";
     cout << endl;
-	
+
     return 0;
 }

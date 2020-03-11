@@ -16,15 +16,6 @@ vector<string> Graph::vertices() const {
 	return v;
 }
 
-void Graph::addVertex(string vertex) {
-	v.push_back(vertex);
-	// I want this to create an n x n matrix, 
-	// increasing n by 1 each time this is called.
-	AdjList adjList;
-	adjList.insert(pair<string, int>(vertex, 0));
-	adjMatrix.insert(pair<string, AdjList>(vertex, adjList));
-}
-
 int Graph::getEdge(string vertexFrom, string vertexTo) {
 	bool hasOrigin = hasVertex(vertexFrom);
 	bool hasDest = hasVertex(vertexTo);
@@ -32,19 +23,11 @@ int Graph::getEdge(string vertexFrom, string vertexTo) {
 // consider changing this to a try-catch clause
 		return -1;
 	else {
+		return 555;
 		// AdjList adjList = adjMatrix.find(vertexFrom)->second;
 		// return adjList.find(vertexTo)->second;
-		return adjMatrix.find(vertexFrom)->second.find(vertexTo)->second;
+		// return adjMatrix.find(vertexFrom)->second.find(vertexTo)->second;
 	}
-}
-
-bool Graph::hasVertex(string vertex) {
-	int end = v.size();
-	for (int i = 0; i < end; i++) {
-		if (v.at(i) == vertex)
-			return true;
-	}
-	return false;
 }
 
 void Graph::addEdge(string vertexFrom, string vertexTo, int weight) {
@@ -59,4 +42,13 @@ void Graph::addEdge(string vertexFrom, string vertexTo, int weight) {
 		// adjMatrix.find(vertexFrom)->second.find(vertexTo)->second = weight;
 		cout << "adding edge..." << endl;
 	}
+}
+
+bool Graph::hasVertex(string vertex) {
+	int end = v.size();
+	for (int i = 0; i < end; i++) {
+		if (v.at(i) == vertex)
+			return true;
+	}
+	return false;
 }
