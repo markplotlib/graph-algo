@@ -6,11 +6,12 @@ using namespace std;
 int main() {    
     cout << "Graph object." << endl;
     
-	vector<string> v1;
-	v1.push_back("a");
-	
-	// graph of single-point only
-	Graph g1 = Graph(v1);
+	// graph of 1-arg ctor
+	// vector<string> v1; v1.push_back("ijk"); Graph g0 = Graph(v1);
+
+	Graph g1 = Graph();
+	g1.addVertex("a");
+	g1.addVertex("b");
 	cout << "graph size: " << g1.size() << endl;
 
 	// vector<vector<int>> adjacencyList;

@@ -17,8 +17,7 @@ using namespace std;
 class Graph {
 public:
 	typedef vector<string> Vertices;
-	typedef map<string, int> Dest;
-	// typedef map<string, Dest> Edge;
+	typedef map<string, int> AdjList;
 
     Graph() {}
     ~Graph() {}
@@ -26,10 +25,9 @@ public:
 
 	int size();
 	vector<string> vertices() const;
-	void addEdge(string vertexFrom, string vertexTo, int weight=1);
-	// int weightFromA(string dest);
+	void addVertex(string);
 
 private:
 	Vertices v;
-	Dest d;
+	AdjList forA;
 };
