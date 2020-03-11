@@ -11,11 +11,29 @@ int main() {
 
 	Graph g1 = Graph();
 	g1.addVertex("a");
-	g1.addVertex("b");
-	g1.addEdge("a", "b");
-	g1.addEdge("a", "c");
-	g1.addVertex("c");
-	g1.addEdge("a", "c");
+	string x = "a", y = "a";
+	cout << "Wgt btwn " << x << " and " << y << " is: " 
+		 << g1.getEdge(x, y) << endl;
+
+	// y = "z";
+	// cout << "Wgt btwn " << x << " and " << y << " is: " 
+		 // << g1.getEdge(x, y) << endl;
+
+	y = "b";
+	g1.addVertex(y);
+	g1.addEdge(x, y, 123);
+	cout << "Wgt btwn " << x << " and " << y << " is: " 
+		 << g1.getEdge(x, y) << endl;
+
+	// b does not lead to a
+	// string tmp;
+	// tmp = x; x = y; y = tmp;
+	// cout << "Wgt btwn " << x << " and " << y << " is: " 
+		 // << g1.getEdge(x, y) << endl;
+
+	// g1.addEdge("a", "c");
+	// g1.addVertex("c");
+	// g1.addEdge("a", "c");
 
 	cout << "Vertices: ";
     vector<string> vertVector = g1.vertices();
