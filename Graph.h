@@ -28,9 +28,9 @@ public:
 	int getEdge(string, string);
 	void addEdge(string vertexFrom, string vertexTo, int weight=1);
 
-	bool hasVertex(string);
 private:
 	Vertices v;
 	map<string, AdjList> adjMatrix;
+	bool hasVertex(string);
 
 };

@@ -11,19 +11,11 @@ int main() {
 
 	Graph g1 = Graph();
 	g1.addVertex("a");
-	// g1.addVertex("b");
-	// g1.addEdge("a", "b");
-
-	string vtx = "a";
-	if (g1.hasVertex(vtx))
-		cout << "vertex " << vtx << " is found" << endl;
-	else
-		cout << "vertex " << vtx << " NOT found" << endl;
-	vtx = "b";
-	if (g1.hasVertex(vtx))
-		cout << "vertex " << vtx << " is found" << endl;
-	else
-		cout << "vertex " << vtx << " NOT found" << endl;
+	g1.addVertex("b");
+	g1.addEdge("a", "b");
+	g1.addEdge("a", "c");
+	g1.addVertex("c");
+	g1.addEdge("a", "c");
 
 	cout << "Vertices: ";
     vector<string> vertVector = g1.vertices();

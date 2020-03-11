@@ -37,17 +37,12 @@ bool Graph::hasVertex(string vertex) {
 }
 
 void Graph::addEdge(string vertexFrom, string vertexTo, int weight) {
-	int i = 0;
-	bool hasOrigin = false, hasDest = false;
-	int end = v.size();
-	// search vector v for two vertex inputs 
-	while (i < end) {
-		if (v.at(i) == vertexFrom) 	hasOrigin = true;
-		if (v.at(i) == vertexTo) 	hasDest = true;
-		i++;
+	bool hasOrigin = hasVertex(vertexFrom);
+	bool hasDest = hasVertex(vertexTo);
+	if (!hasOrigin || !hasDest)
+// change this to a try-catch clause
+		cout << "Unable to add edge: Vertex not found." << endl;
+	else {
+		cout << "able to add edge..." << endl;
 	}
-	if (hasOrigin && hasDest)
-		cout << "Vertex found." << endl;
-	else
-		cout << "Warning: Vertex not found." << endl;		
 }
