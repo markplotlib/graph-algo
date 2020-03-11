@@ -14,6 +14,17 @@ int main() {
 	// g1.addVertex("b");
 	// g1.addEdge("a", "b");
 
+	string vtx = "a";
+	if (g1.hasVertex(vtx))
+		cout << "vertex " << vtx << " is found" << endl;
+	else
+		cout << "vertex " << vtx << " NOT found" << endl;
+	vtx = "b";
+	if (g1.hasVertex(vtx))
+		cout << "vertex " << vtx << " is found" << endl;
+	else
+		cout << "vertex " << vtx << " NOT found" << endl;
+
 	cout << "Vertices: ";
     vector<string> vertVector = g1.vertices();
     vector<string>::iterator itr;

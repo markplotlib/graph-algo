@@ -27,6 +27,15 @@ int Graph::getEdge(string vertexFrom, string vertexTo) {
 	return 5;
 }
 
+bool Graph::hasVertex(string vertex) {
+	int end = v.size();
+	for (int i = 0; i < end; i++) {
+		if (v.at(i) == vertex)
+			return true;
+	}
+	return false;
+}
+
 void Graph::addEdge(string vertexFrom, string vertexTo, int weight) {
 	int i = 0;
 	bool hasOrigin = false, hasDest = false;
