@@ -25,6 +25,7 @@ public:
 
 	vector<string> vertices() const;
 	void addVertex(string);
+	int getEdge(string, string);
 	void addEdge(string vertexFrom, string vertexTo, int weight=1);
 
 private:

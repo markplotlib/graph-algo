@@ -18,6 +18,13 @@ vector<string> Graph::vertices() const {
 
 void Graph::addVertex(string vertex) {
 	v.push_back(vertex);
+	AdjList adjList;
+	adjList.insert(pair<string, int>(vertex, 0));
+	adjMatrix.insert(pair<string, AdjList>(vertex, adjList));
+}
+
+int Graph::getEdge(string vertexFrom, string vertexTo) {
+	return 5;
 }
 
 void Graph::addEdge(string vertexFrom, string vertexTo, int weight) {

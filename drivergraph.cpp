@@ -11,10 +11,10 @@ int main() {
 
 	Graph g1 = Graph();
 	g1.addVertex("a");
-	g1.addVertex("b");
+	// g1.addVertex("b");
+	// g1.addEdge("a", "b");
 
-	g1.addEdge("a", "b");
-
+	cout << "Vertices: ";
     vector<string> vertVector = g1.vertices();
     vector<string>::iterator itr;
     for (auto itr : vertVector)
