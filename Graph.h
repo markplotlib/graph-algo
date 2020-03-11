@@ -23,11 +23,11 @@ public:
     ~Graph() {}
 	Graph(const Vertices& initial);
 
-	int size();
 	vector<string> vertices() const;
 	void addVertex(string);
+	void addEdge(string vertexFrom, string vertexTo, int weight=1);
 
 private:
 	Vertices v;
-	AdjList forA;
+	map<string, AdjList> adjMatrix;
 };

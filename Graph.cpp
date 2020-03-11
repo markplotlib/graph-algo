@@ -12,10 +12,6 @@ Graph::Graph(const Vertices& initial) {
 	}
 }
 
-int Graph::size() {
-	return v.size();
-}
-
 vector<string> Graph::vertices() const {
 	return v;
 }
@@ -24,5 +20,18 @@ void Graph::addVertex(string vertex) {
 	v.push_back(vertex);
 }
 
-// void Graph::addEdge(string vertexFrom, string vertexTo, int weight) {
-// }
+void Graph::addEdge(string vertexFrom, string vertexTo, int weight) {
+	int i = 0;
+	bool hasOrigin = false, hasDest = false;
+	int end = v.size();
+	// search vector v for two vertex inputs 
+	while (i < end) {
+		if (v.at(i) == vertexFrom) 	hasOrigin = true;
+		if (v.at(i) == vertexTo) 	hasDest = true;
+		i++;
+	}
+	if (hasOrigin && hasDest)
+		cout << "Vertex found." << endl;
+	else
+		cout << "Warning: Vertex not found." << endl;		
+}

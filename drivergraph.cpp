@@ -12,13 +12,8 @@ int main() {
 	Graph g1 = Graph();
 	g1.addVertex("a");
 	g1.addVertex("b");
-	cout << "graph size: " << g1.size() << endl;
 
-	// vector<vector<int>> adjacencyList;
-	// g1.addEdge("a", "b");
-	// should be (a)-->(b)
-	// [0 1]
-	// [0 0]
+	g1.addEdge("a", "b");
 
     vector<string> vertVector = g1.vertices();
     vector<string>::iterator itr;
