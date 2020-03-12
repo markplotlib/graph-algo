@@ -21,7 +21,7 @@ Graph::VertexList Graph::vertices() const {
 Graph::EdgeList Graph::outgoing(Graph::Vertex vtx) const {
 	return edgeList.find(vtx)->second;
 }
-    
+
 void Graph::addEdge(Graph::Vertex vFrom, Graph::Vertex vTo, int wgt) {
 	bool hasOrigin = hasVertex(vFrom);
 	bool hasDest = hasVertex(vTo);
@@ -29,10 +29,11 @@ void Graph::addEdge(Graph::Vertex vFrom, Graph::Vertex vTo, int wgt) {
 // consider changing this to a try-catch clause
 		cout << "Unable to ADD edge: Graph::Vertex not found." << endl;
 	else {
-		// I don't know why this fills the whole screen 
-		// with some invalid pointer error.
-		// adjMatrix.find(vFrom)->second.find(vTo)->second = wgt;
 		cout << "adding edge..." << endl;
+		Graph::Edge edge = Graph::Edge(vFrom, vTo, wgt);
+		Graph::EdgeList edgeVector;
+		edgeVector.push_back(edge);
+		edgeList.insert(pair<Graph::Vertex, Graph::EdgeList>(vTo, edgeVector));
 	}
 }
 
