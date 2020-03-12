@@ -1,31 +1,23 @@
-#include "Graph.h"
 #include <iostream>
-#include <string>
-#include <vector>
+#include "Graph.h"
 using namespace std;
 
 int main() {
+    Graph g;
+    g.addEdge("a", "b", 12);
+    g.addEdge("a", "c", 13);
+    g.addEdge("b", "a", 12);  // if we want an undirected graph we have to put identical edges in both directions
+    g.addEdge("c", "a", 13);
 
-	vector<Graph::Vertex> verts{ "a", "b", "c"};
-	Graph gg = Graph(verts);
-	gg.addEdge("a", "b");
+    vector<string> vertices = g.vertices();
+    for (auto it = vertices.begin(); it != vertices.end(); it++) {
+        string vertex = *it;
+        cout << endl << "Vertex: " << vertex << endl;
 
-	// fail: add edge to non-existant vertex
-	cout << "Test: vertex 'lmnop'. Result: ";
-	gg.addEdge("a", "lmnop");
+        vector<Graph::Edge> edges = g.outgoing(vertex);
+        for (auto it = edges.begin(); it != edges.end(); it++)
+            cout << "\t" << it->vFrom << "->" << it->vTo << " (" << it->weight << ")" << endl;
 
-	// adding edge of non-default value
-	gg.addEdge("a", "c", 123);
-	
-	cout << "Vertices: ";
-    vector<string> vertVector = gg.vertices();
-    vector<string>::iterator itr;
-    for (auto itr : vertVector)
-		cout << itr << " ";
-    cout << endl;
-
-	// throws std::bad_alloc
-	Graph::EdgeList edgesFromA = gg.outgoing("a");
-
+    }
     return 0;
 }
