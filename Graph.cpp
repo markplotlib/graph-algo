@@ -3,51 +3,43 @@
 #include "Graph.h"
 #include <iostream>
 #include <string>
+#include <vector>
+#include <map>
 using namespace std;
 
-Graph::Graph(const Vertices& initial) {
-	vector<string>::const_iterator itr;
+Graph::Graph(const VertexList& initial) {
+	vector<Vertex>::const_iterator itr;
 	for (auto itr : initial) {
-		v.push_back(itr);
+		vertexList.push_back(itr);
 	}
 }
 
-vector<string> Graph::vertices() const {
-	return v;
+Graph::VertexList Graph::vertices() const {
+	return vertexList;
 }
 
-int Graph::getEdge(string vertexFrom, string vertexTo) {
-	bool hasOrigin = hasVertex(vertexFrom);
-	bool hasDest = hasVertex(vertexTo);
-	if (!hasOrigin || !hasDest)
-// consider changing this to a try-catch clause
-		return -1;
-	else {
-		return 555;
-		// AdjList adjList = adjMatrix.find(vertexFrom)->second;
-		// return adjList.find(vertexTo)->second;
-		// return adjMatrix.find(vertexFrom)->second.find(vertexTo)->second;
-	}
+Graph::EdgeList Graph::outgoing(Graph::Vertex vtx) const {
+	return edgeList.find(vtx)->second;
 }
-
-void Graph::addEdge(string vertexFrom, string vertexTo, int weight) {
-	bool hasOrigin = hasVertex(vertexFrom);
-	bool hasDest = hasVertex(vertexTo);
+    
+void Graph::addEdge(Graph::Vertex vFrom, Graph::Vertex vTo, int wgt) {
+	bool hasOrigin = hasVertex(vFrom);
+	bool hasDest = hasVertex(vTo);
 	if (!hasOrigin || !hasDest)
 // consider changing this to a try-catch clause
-		cout << "Unable to ADD edge: Vertex not found." << endl;
+		cout << "Unable to ADD edge: Graph::Vertex not found." << endl;
 	else {
 		// I don't know why this fills the whole screen 
 		// with some invalid pointer error.
-		// adjMatrix.find(vertexFrom)->second.find(vertexTo)->second = weight;
+		// adjMatrix.find(vFrom)->second.find(vTo)->second = wgt;
 		cout << "adding edge..." << endl;
 	}
 }
 
-bool Graph::hasVertex(string vertex) {
-	int end = v.size();
+bool Graph::hasVertex(Graph::Vertex vtx) {
+	int end = vertexList.size();
 	for (int i = 0; i < end; i++) {
-		if (v.at(i) == vertex)
+		if (vertexList.at(i) == vtx)
 			return true;
 	}
 	return false;

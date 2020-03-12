@@ -7,7 +7,6 @@
  * @author Mark Chesney, Seattle University
  * @see CPSC5031, Winter 2020, HW #8
  */
-
 #pragma once
 #include <string>
 #include <vector>
@@ -16,18 +15,23 @@ using namespace std;
 
 class Graph {
 public:
-	typedef vector<string> Vertices;
-	typedef map<string, int> AdjList;
+    typedef string Vertex;
+    struct Edge {
+        Vertex vFrom, vTo;
+        int weight;
+        Edge(Vertex vFrom, Vertex vTo, int wgt) : vFrom(vFrom), vTo(vTo), weight(wgt) {}
+    };
+    typedef vector<Vertex> VertexList;
+    typedef vector<Edge> EdgeList;
 
-	Graph(const Vertices& initial);
+	Graph(const VertexList& initial);
 
-	vector<string> vertices() const;
-	int getEdge(string, string);
-	void addEdge(string vertexFrom, string vertexTo, int weight=1);
-
+    void addEdge(Vertex vFrom, Vertex vTo, int wgt=1);
+    EdgeList outgoing(Vertex v) const;
+    VertexList vertices() const;
+	
 private:
-	Vertices v;
-	vector<AdjList> edges;
-	bool hasVertex(string);
-
+    VertexList vertexList;
+    map<Vertex, EdgeList> edgeList;
+	bool hasVertex(Vertex);
 };
