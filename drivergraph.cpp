@@ -6,28 +6,26 @@ using namespace std;
 
 int main() {
 
-    string a = "a", b = "b";
-	vector<string> verts{ a, b};
+	vector<Graph::Vertex> verts{ "a", "b", "c"};
 	Graph gg = Graph(verts);
-	gg.addEdge(a, b);
-
-	// cout << "Wgt btwn " << a << " and " << b << " is: "
-		 // << gg.getEdge(a, b) << endl;
+	gg.addEdge("a", "b");
 
 	// fail: add edge to non-existant vertex
-	cout << "test: vertex lmnop" << endl;
-	gg.addEdge(a, "lmnop");
+	cout << "Test: vertex 'lmnop'. Result: ";
+	gg.addEdge("a", "lmnop");
 
 	// adding edge of non-default value
-	// gg.addEdge(a, b, 123);
+	gg.addEdge("a", "c", 123);
+	
+	cout << "Vertices: ";
+    vector<string> vertVector = gg.vertices();
+    vector<string>::iterator itr;
+    for (auto itr : vertVector)
+		cout << itr << " ";
+    cout << endl;
 
-
-	// cout << "Vertices: ";
-    // vector<string> vertVector = g1.vertices();
-    // vector<string>::iterator itr;
-    // for (auto itr : vertVector)
-        // cout << itr << " ";
-    // cout << endl;
+	// throws std::bad_alloc
+	Graph::EdgeList edgesFromA = gg.outgoing("a");
 
     return 0;
 }

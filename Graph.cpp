@@ -23,9 +23,9 @@ void Graph::addEdge(Graph::Vertex vFrom, Graph::Vertex vTo, int wgt) {
 	bool hasDest = hasVertex(vTo);
 	if (!hasOrigin || !hasDest)
 		// edge not found
-		cout << "Unable to ADD edge: Graph::Vertex not found." << endl;
+		cout << "Unable to ADD edge: Vertex not found." << endl;
 	else {
-		cout << "adding edge..." << endl;
+		cout << "adding edge " << vTo << "..." << endl;
 		Graph::Edge edge = Graph::Edge(vFrom, vTo, wgt);
 		Graph::EdgeList edgeVector;
 		edgeVector.push_back(edge);
