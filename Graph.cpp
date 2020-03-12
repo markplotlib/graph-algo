@@ -18,15 +18,11 @@ Graph::VertexList Graph::vertices() const {
 	return vertexList;
 }
 
-Graph::EdgeList Graph::outgoing(Graph::Vertex vtx) const {
-	return edgeList.find(vtx)->second;
-}
-
 void Graph::addEdge(Graph::Vertex vFrom, Graph::Vertex vTo, int wgt) {
 	bool hasOrigin = hasVertex(vFrom);
 	bool hasDest = hasVertex(vTo);
 	if (!hasOrigin || !hasDest)
-// consider changing this to a try-catch clause
+		// edge not found
 		cout << "Unable to ADD edge: Graph::Vertex not found." << endl;
 	else {
 		cout << "adding edge..." << endl;
@@ -35,6 +31,10 @@ void Graph::addEdge(Graph::Vertex vFrom, Graph::Vertex vTo, int wgt) {
 		edgeVector.push_back(edge);
 		edgeList.insert(pair<Graph::Vertex, Graph::EdgeList>(vTo, edgeVector));
 	}
+}
+
+Graph::EdgeList Graph::outgoing(Graph::Vertex vtx) const {
+	return edgeList.find(vtx)->second;
 }
 
 bool Graph::hasVertex(Graph::Vertex vtx) {

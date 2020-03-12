@@ -27,7 +27,7 @@ public:
 	Graph(const VertexList& initial);
 
     void addEdge(Vertex vFrom, Vertex vTo, int wgt=1);
-    EdgeList outgoing(Vertex v) const;
+    EdgeList outgoing(Vertex vtx) const;
     VertexList vertices() const;
 	
 private:
