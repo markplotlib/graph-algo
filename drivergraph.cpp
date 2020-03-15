@@ -4,6 +4,7 @@ using namespace std;
 
 int main() {
     Graph g;
+    cout << "adding edges..." << endl;
     g.addEdge("a", "b", 12);
     g.addEdge("a", "c", 13);
     g.addEdge("b", "a", 12);  // if we want an undirected graph we have to put identical edges in both directions

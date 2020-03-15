@@ -7,19 +7,11 @@
 #include <map>
 using namespace std;
 
-Graph::Graph(const VertexList& initial) {
-	vector<Vertex>::const_iterator itr;
-	for (auto itr : initial) {
-		vertexList.push_back(itr);
-	}
-}
-
 Graph::VertexList Graph::vertices() const {
 	return vertexList;
 }
 
 void Graph::addEdge(Graph::Vertex vFrom, Graph::Vertex vTo, int wgt) {
-	cout << "adding edge " << vTo << "..." << endl;
 	Graph::Edge edge = Graph::Edge(vFrom, vTo, wgt);
 	Graph::EdgeList edgeVector;
 	edgeVector.push_back(edge);
