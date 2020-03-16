@@ -9,11 +9,13 @@ int main() {
     cout << "running Driver.cpp file" << endl;
 
     Graph g;
-    g.addEdge("a", "b", 12);
-    g.addEdge("a", "c", 13);
-    // what follows is effectively an undirected graph representation
-    g.addEdge("b", "a", 12);
-    g.addEdge("c", "a", 13);
+    g.addEdge("a", "d", 7);
+    g.addEdge("d", "b", 2);
+    g.addEdge("d", "c", 5);
+    g.addEdge("b", "a", 3);
+    g.addEdge("b", "c", 4);
+    g.addEdge("c", "e", 6);
+    g.addEdge("e", "d", 4);
 
     vector<string> vertices = g.vertices();
 
