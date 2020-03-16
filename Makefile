@@ -1,6 +1,6 @@
 CPPFLAGS = -std=c++11 -Wall -Werror -pedantic -ggdb
 
-graph.o : drivergraph.o Graph.o
+hw8.o : Heap.o Driver.o Graph.o
 	g++ $^ -o $@
 
 %.o : %.cpp
