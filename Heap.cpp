@@ -51,12 +51,12 @@ void Heap::enqueue(Key key, int weight) {
     } else {
         // key not found in weights -- insert new key
         heap.push_back(key);                    // Py:  self.heap.append(key)
-        old_w = 0;                              // Py:  old_w = None
+        old_w = -1;                              // Py:  old_w = None
         i = last();                             // Py:  i = self._last()
         place.insert(pair<Key, int>(key, i));   // Py:  self.place[key] = i
     }
     weights.find(itr->first)->second = weight;     // Py: self.weights[key] = weight
-    if (old_w == 0 || old_w > weight)
+    if (old_w <= 0 || old_w > weight)
         swapUp(i);
     else if (old_w < weight)
         swapDown(i);
@@ -67,8 +67,8 @@ void Heap::enqueue(Key key, int weight) {
  * @return the key:weight of the minimum weight in the heap.
  */
 Heap::KeyWeight Heap::dequeue() {
-    if (last() < 0)
-        return Heap::KeyWeight();
+    if (last() <= 0)
+        return Heap::KeyWeight();		// Py: return None
 
     // retrieve the minimum element (at the root)
     Key key = heap.at(0);
@@ -94,8 +94,6 @@ Heap::KeyWeight Heap::dequeue() {
  * @return list of key:weight pairs (arbitrary order)
  */
 const Heap::WeightMap& Heap::weightMap() const {
-                                        // this const doesn't change the heap object
-// this const returns a constant weightmap
     return weights;
 }
 
@@ -117,7 +115,7 @@ int Heap::rightChild(int p) const {
 
 Heap::Weight Heap::weight(int i) const {
     if (i > last())
-        return 0;
+        return -1;
     else
         return weights.find(heap.at(i))->second;
 }
@@ -141,21 +139,21 @@ void Heap::swapDown(int p) {
     int child = leftChild(p);
     int right = rightChild(p);
     int childWgt = weight(child);
-    if (childWgt != 0) {
-        int rightWgt = weight(right);
-        if ((rightWgt != 0) && (rightWgt < childWgt)) {
-            child = right;
-            childWgt = rightWgt;
-        }
-        if (weight(p) > childWgt) {
-            Key tmp = heap.at(child);
-            heap.at(child) = heap.at(p);
-            Key placeKeyChild = heap.at(child);
-            place.find(placeKeyChild)->second = child;
-            Key placeKeyParent = heap.at(p);
-            place.find(placeKeyParent)->second = p;
-        }
-    }
+    if (childWgt > 0) {
+		int rightWgt = weight(right);
+		if ((rightWgt > 0) && (rightWgt < childWgt)) {
+			child = right;
+			childWgt = rightWgt;
+		}
+		if (weight(p) > childWgt) {
+			Key tmp = heap.at(child);
+			heap.at(child) = heap.at(p);
+			Key placeKeyChild = heap.at(child);
+			place.find(placeKeyChild)->second = child;
+			Key placeKeyParent = heap.at(p);
+			place.find(placeKeyParent)->second = p;
+		}
+	}
 }
 
 void Heap::heapConstruct() {
