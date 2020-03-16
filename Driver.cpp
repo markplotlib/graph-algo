@@ -6,12 +6,14 @@
 using namespace std;
 
 int main() {
-
     cout << "running Driver.cpp file" << endl;
-    cout << "Mark: Monday noon-time" << endl;
+
     Graph g;
-    cout << "adding edges " << "a" << "b" << "123" << endl;
-    g.addEdge("a", "b", 123);
+    g.addEdge("a", "b", 12);
+    g.addEdge("a", "c", 13);
+    // what follows is effectively an undirected graph representation
+    g.addEdge("b", "a", 12);
+    g.addEdge("c", "a", 13);
 
     vector<string> vertices = g.vertices();
 

@@ -15,7 +15,6 @@ void Graph::addEdge(string vFrom, string vTo, int wgt) {
     Edge edge(vFrom, vTo, wgt);
     edgeVector.push_back(edge);
 
-    cout << "Monday" << endl;
     // if this is a new vertex, then add to vertex list and edge list
 
     if (edgeList.find(vTo) == edgeList.end()) {
