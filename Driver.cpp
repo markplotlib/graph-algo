@@ -8,16 +8,15 @@
 using namespace std;
 
 void dijkstra(const Graph g, const string start) {
-    vector<string> vertices = g.vertices();
-    int n = vertices.size();     // n is |V|, number of vertices in the graph
+    int n = g.vertices().size();     // n is |V|, number of vertices in the graph
 
-	// initialize data structures
+    // initialize data structures
     map<string, string> path;
 // map<string, EdgeList> path;
     map<string, int> shortest;
-	set<string> found;
+    set<string> found;
 
-    for (auto itr : vertices) {
+    for (auto itr : g.vertices()) {
         path.insert(pair<string, string>(itr, ""));
         shortest.insert(pair<string, int>(itr, 0));
     }
@@ -30,27 +29,34 @@ void dijkstra(const Graph g, const string start) {
     // get shortest path to every other vertex
 
     // while len(found) < n:
+	// while (found.size() < n) {
 
-		// find closest unsolved vertex
-		string closest = unsolved.dequeue().key;
-		int distance = unsolved.dequeue().weight;
+        // find closest unsolved vertex
+        string closest = unsolved.dequeue().key;
+        // note: distance is an unused variable.
+		// int distance = unsolved.dequeue().weight;
 
-		// closest vertex is now solved, we know that no other shorter path exists
-		found.insert(closest);
-		
-		for (auto it : found)
-			cout << it << " ";
-		cout << distance << endl;
-	
-    //     # update paths to other vertices via closest
-    //     for k in g[closest]:
-    //         if k not in found:
-    //             new_path_to_k = shortest[closest] + g[closest][k]
-    //             if new_path_to_k < unsolved.weights[k]:
-    //                 unsolved.enqueue(k, new_path_to_k)  # fix weight in priority queue
-    //                 shortest[k] = new_path_to_k
-    //                 path[k] = closest
-    //
+        // closest vertex is now solved, we know that no other shorter path exists
+        found.insert(closest);
+
+        // update paths to other vertices via closest
+        // for k in g[closest]
+//        for (auto k : g.vertices().at(closest)) {
+        for (auto k : g.vertices()) {
+            set<string>::iterator itr = found.find(k);
+            if (itr == found.end()) {  // key k is not found
+                int new_path_to_k = shortest.find(closest)->second;
+// TO DO TO DO  //new_path_to_k = shortest[closest] + g[closest][k]
+// TO DO TO DO      new_path_to_k += g.vertices().at(closest);
+                if (new_path_to_k < unsolved.weightMap().find(k)->second) {
+                    unsolved.enqueue(k, new_path_to_k);  // fix weight in priority queue
+                    shortest.find(k)->second = new_path_to_k;
+// TO DO  TO DO     path.find(k)->first = closest;
+                }
+            }
+        }
+// }
+
     // # report results (not officially part of Dijkstra's--we wouldn't count this in time analysis)
     // paths = {}
     // for v in g:
