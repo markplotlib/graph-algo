@@ -8,7 +8,7 @@
 using namespace std;
 
 void dijkstra(const Graph g, const string start) {
-    int n = g.vertices().size();     // n is |V|, number of vertices in the graph
+    unsigned long int n = g.vertices().size();     // n is |V|, number of vertices in the graph
 
     // initialize data structures
     map<string, string> path;
@@ -27,9 +27,7 @@ void dijkstra(const Graph g, const string start) {
     Heap unsolved = Heap(shortest);
 
     // get shortest path to every other vertex
-
-    // while len(found) < n:
-	// while (found.size() < n) {
+	while (found.size() < n) {
 
         // find closest unsolved vertex
         string closest = unsolved.dequeue().key;
@@ -55,7 +53,7 @@ void dijkstra(const Graph g, const string start) {
                 }
             }
         }
-// }
+	}
 
     // # report results (not officially part of Dijkstra's--we wouldn't count this in time analysis)
     // paths = {}
