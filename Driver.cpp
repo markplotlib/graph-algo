@@ -7,12 +7,11 @@
 #include "Graph.h"
 using namespace std;
 
-void dijkstra(const Graph g, const string start) {
+map<string, int> dijkstra(const Graph g, const string start) {
     unsigned long int n = g.vertices().size();     // n is |V|, number of vertices in the graph
 
     // initialize data structures
     map<string, string> path;
-// map<string, EdgeList> path;
     map<string, int> shortest;
     set<string> found;
 
@@ -47,27 +46,11 @@ void dijkstra(const Graph g, const string start) {
             }
         }
     }
-
-    // # report results (not officially part of Dijkstra's--we wouldn't count this in time analysis)
-    // paths = {}
-    // for v in g:
-    //     if v != start:
-    //         this_path = []  # collect the previously-found shortest path edges from start to v
-    //         w = v
-    //         while w != start:
-    //             this_path.append(w)  # w is previous vertex in shortest path
-    //             w = path[w]
-    //         this_path.append(start)
-    //         this_path.reverse()
-    //         paths[v] = ''.join(this_path)
-    // del (shortest[start])  # take out shortest[start] (which is zero)
-    // return shortest, paths
-
+    return shortest;
 }
 
 
 int main() {
-    cout << "running Driver.cpp file" << endl;
 
     Graph g;
     g.addEdge("a", "d", 7);
@@ -79,7 +62,6 @@ int main() {
     g.addEdge("e", "d", 4);
 
     vector<string> vertices = g.vertices();
-
     for (auto it = vertices.begin(); it != vertices.end(); it++) {
         string vertex = *it;
         cout << endl << "Vertex: " << vertex << endl;
@@ -87,7 +69,6 @@ int main() {
         vector<Graph::Edge> edges = g.outgoing(vertex);
         for (auto it = edges.begin(); it != edges.end(); it++)
             cout << "\t" << it->vFrom << "->" << it->vTo << " (" << it->weight << ")" << endl;
-
     }
 
     // Dijkstra's Algorithm: solving single-source shortest paths problem
