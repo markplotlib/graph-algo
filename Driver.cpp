@@ -22,38 +22,31 @@ void dijkstra(const Graph g, const string start) {
     }
     shortest.find(start)->second = 0;
 
-    cout << "temp line" << n << path.size() << shortest.size() << found.size() << endl;
-
     Heap unsolved = Heap(shortest);
 
     // get shortest path to every other vertex
-	while (found.size() < n) {
+    while (found.size() < n) {
 
         // find closest unsolved vertex
         string closest = unsolved.dequeue().key;
         // note: distance is an unused variable.
-		// int distance = unsolved.dequeue().weight;
+        // int distance = unsolved.dequeue().weight;
 
         // closest vertex is now solved, we know that no other shorter path exists
         found.insert(closest);
 
         // update paths to other vertices via closest
-        // for k in g[closest]
-//        for (auto k : g.vertices().at(closest)) {
-        for (auto k : g.vertices()) {
-            set<string>::iterator itr = found.find(k);
-            if (itr == found.end()) {  // key k is not found
-                int new_path_to_k = shortest.find(closest)->second;
-// TO DO TO DO  //new_path_to_k = shortest[closest] + g[closest][k]
-// TO DO TO DO      new_path_to_k += g.vertices().at(closest);
-                if (new_path_to_k < unsolved.weightMap().find(k)->second) {
-                    unsolved.enqueue(k, new_path_to_k);  // fix weight in priority queue
-                    shortest.find(k)->second = new_path_to_k;
-// TO DO  TO DO     path.find(k)->first = closest;
+        for (auto k : g.outgoing(closest)) {
+            if (found.find(k.vTo) == found.end()) {  // key k is not found
+                int new_path_to_k = shortest.find(closest)->second + k.weight;
+                if (new_path_to_k < unsolved.weightMap().find(k.vTo)->second) {
+                    unsolved.enqueue(k.vTo, new_path_to_k);  // fix weight in priority queue
+                    shortest.find(k.vTo)->second = new_path_to_k;
+                    path.find(k.vTo)->second = closest;
                 }
             }
         }
-	}
+    }
 
     // # report results (not officially part of Dijkstra's--we wouldn't count this in time analysis)
     // paths = {}
